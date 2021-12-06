@@ -1,31 +1,26 @@
 import React from 'react';
-import {StyleSheet, Text,View,StatusBar} from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import Profile from './screen/Profile';
+import Feed from './Screen/Feed';
 
 
-export default function App(){
-  return(
-      <View style={{flex:1}}>
-      <View style={{flex: 1,backgroundColor:'yellow'}}>
-        <Text style={styles.appTitle}>GGGGG</Text>
-      </View>
-        <View style={{flex: 10,backgroundColor:'green'}}>
-
-        </View>
-        <View style={{flex: 1,backgroundColor:'yellow'}}>
-
-        </View>
-      </View>
+export default function App() {
+  return (
+    <View style={styles.outer}>
+      <Text>Cibal</Text>
+    </View>
   );
-
 };
 
 const styles = StyleSheet.create({
-  appTitle:{
-    color:'black',
-    fontSize: 40,
-    marginTop: 0,
-    textAlign: 'center',
+  outer: {
+    flex: 1,
+
   },
-
-
+  container: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
