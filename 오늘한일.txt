@@ -1,0 +1,6 @@
+21.12.7
+Todo List 강의보고 만들기
+tempData 위치 바꿧다가 오류나서 하루종일 찾아해맴
+생성, 삭제, map 사용법 익힘.
+deleteTask함수 만들면서 데이터 흐름 익힘.
+styled-component/native 익숙해지는중.
