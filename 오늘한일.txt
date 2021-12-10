@@ -15,3 +15,14 @@ todoApp완성(todo)
 API에 대해 배움
 ContextAPI로 전역 상태관리를 할 수 있게 되었다.(practice2)
 Stack Navigation에 대해 알아보았다.(practice3)
+Tab Navigation에 대해 알아보았다.(Stack보다 쉬움/practice4)
+
+21.12.10
+파이어베이스(서버)에서 이미지 가져다쓰기
+Chat앱 튜토리얼 따라하기.
+이미지 속성 uri 한글자때문에 이미지 안나와서 삽질함.
+깔끔한 앱만들려면 옵션을 잘 읽어봐야겠다.
+앱 만들때 필요 폴더들 컴포넌트 컨텍스트 네비게이션 스크린 연계 기억하기
+음성인식 튜토리얼, react-native-voice 다시해보니 더 쉬웠다.
+내일 노트북 가져가서 테스트 해볼것.
+
