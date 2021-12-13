@@ -16,12 +16,13 @@ const StyledText = styled.Text`
 const App = ()=>{
     const [isRecord,setIsRecord]=useState(false);
     const [text,setText]=useState('');
-    const buttonLabel=isRecord? 'Stop':'start';
+    const [say,setSay]=useState('아무말도');
+    const buttonLabel=isRecord? '멈춤':'시작';
     const voiceLabel = text
     ?text
         :isRecord
-    ?'Say something'
-        :'press Start button';
+    ?'무언가 말하세요'
+        :'버튼을 누르세요';
 
     const _onSpeechStart=()=>{
         console.log('onSpeechStart');
@@ -37,12 +38,15 @@ const App = ()=>{
         console.log('_onSpeechError');
         console.log(event.error);
     };
+    const _getSpeech = (event)=>{
+        setSay('무언가말')
+    }
 
     const _onRecordVoice = () => {
         if (isRecord) {
             Voice.stop();
         } else {
-            Voice.start('en-US');
+            Voice.start('ko-KR');
         }
         setIsRecord(!isRecord);
     };
@@ -51,6 +55,7 @@ const App = ()=>{
         Voice.onSpeechEnd = _onSpeechEnd;
         Voice.onSpeechResults = _onSpeechResults;
         Voice.onSpeechError = _onSpeechError;
+        Voice.onSpeechRecognized = _getSpeech;
         return () => {
             Voice.destroy().then(Voice.removeAllListeners);
         };
@@ -59,6 +64,7 @@ const App = ()=>{
         <Container>
             <StyledText>{voiceLabel}</StyledText>
             <Button title={buttonLabel} onPress={_onRecordVoice}/>
+            <StyledText>{say}</StyledText>
         </Container>
     );
 };
