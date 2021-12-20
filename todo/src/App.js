@@ -38,10 +38,10 @@ export default function App() {
     const width = Dimensions.get('window').width;
     const [newTask,setNewTask]=useState('');//새로 글쓰면 계속해서 업데이트
     // const tempData={//무조건 const [tasks,setTasks]=useState(tempData); 이전에 나와야하는데
-    //             //이거모르고 삽질 몇시간함. 
-    
+    //             //이거모르고 삽질 몇시간함.
+
     //     '1':{id: '1', text:'one',completed: false},
-    //     '2':{id: '2', text:'two',completed: true},
+    //     '2':{id: '2', text:'two',completed: true},JL
     //     '3':{id: '3', text:'three',completed: false},
     // };
     const [tasks,setTasks]=useState({});//여기에 List 내용 들어감
@@ -55,7 +55,7 @@ export default function App() {
         const loadedData = await AsyncStorage.getItem('tasks'); //키 tasks 에서 데이터 가져옴.
         setTasks(JSON.parse(loadedData||'{}')); //setTasks함수 호출. 아무것도 없을시 빈 객체 반환
     };
-    
+
     //추가
     const addTask = ()=>{
         if (newTask.length<1){//아무것도 안썻을때
@@ -88,7 +88,7 @@ export default function App() {
   };
     //수정처리
   const updateTask=item=>{
-      const currentTasks = Object.assign({},tasks); 
+      const currentTasks = Object.assign({},tasks);
       currentTasks[item.id]=item;//수정하는 아이템 전체를 변경
       //setTasks(currentTasks); 수정한 리스트 적용
       storeData(currentTasks);
@@ -111,12 +111,12 @@ export default function App() {
                 item =>(
                     <Task key={item.id}  //tasks에서 각각의 id
                     item={item} //id,text,completed
-                    deleteTask={deleteTask} 
+                    deleteTask={deleteTask}
                     toggleTask={toggleTask}
                     updateTask={updateTask}/>
                 ))}
         </List>
-        </Container>    
+        </Container>
     </ThemeProvider>
   ):(<AppLoading
     startAsync={getData}//앱시작하기 전에 데이터 가져옴.
