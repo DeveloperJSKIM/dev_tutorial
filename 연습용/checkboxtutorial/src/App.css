@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  flex-direction: column;
+}
+.container-father{
+  background-color: aquamarine;
+}
+.container-mother{
+  background-color:antiquewhite;
+}
+.container-brother{
+  background-color: cadetblue;
+}
+.container-sister{
+  background-color: coral;
+}
