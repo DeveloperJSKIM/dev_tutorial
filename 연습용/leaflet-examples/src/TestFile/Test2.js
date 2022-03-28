@@ -11,9 +11,13 @@ const Test2 = () => {
     const [mapLayers, setMapLayers] = useState([]);
 
     const ZOOM_LEVEL = 12;
-    const mapRef = useRef();
+    const editRef = useRef(null);
+    const onDeleteRef = useRef(null);
 
     const _onCreate = (e) => {
+        console.log("del")
+        onDeleteRef.current = e;
+        console.log(onDeleteRef.current);
         console.log(e);
 
         const { layerType, layer } = e;
@@ -45,38 +49,61 @@ const Test2 = () => {
     };
 
     const _onDeleted = (e) => {
-        console.log(e);
+        console.log(e)
         const {
             layers: { _layers },
         } = e;
-
         Object.values(_layers).map(({ _leaflet_id }) => {
             setMapLayers((layers) => layers.filter((l) => l.id !== _leaflet_id));
         });
     };
+    const onMounted= (e) => {
+        editRef.current = e;
+    };
+    const _onDeleteStart=(e)=>{
+        console.log("del start")
+        console.log(e)
+    }
+    const _onDeleteStop=(e)=>{
+        console.log("del stop")
+        console.log(e)
+    }
+    const _onEditMove=(e)=>{
+        console.log("edit move")
+        console.log(e)
+    }
 
     return (
         <>
-
             <div className={"container"}>
                 <div>
                     <h2>React-leaflet - Create, edit and delete polygon on map</h2>
-
+                    <button onClick={()=>{
+                        editRef.current._toolbars.draw._modes.polygon.handler.enable();
+                    }}>START</button>
+                    <button onClick={()=>{
+                        editRef.current._toolbars.draw._modes.polygon.handler.completeShape();
+                        console.log(editRef.current)
+                    }}>STOP</button>
+                    <button onClick={()=>{
+                        editRef.current._toolbars.draw._modes.rectangle.handler.enable();
+                    }}>START2</button>
+                    <button onClick={()=>{
+                        editRef.current._toolbars.edit._modes.remove.handler.enable();
+                    }}>CLEAR</button>
                     <div>
-                        <MapContainer center={center} zoom={ZOOM_LEVEL} ref={mapRef} className={"map"}>
+                        <MapContainer center={center} zoom={ZOOM_LEVEL} className={"map"}>
                             <FeatureGroup>
                                 <EditControl
                                     position="topright"
+                                    onMounted={onMounted}
                                     onCreated={_onCreate}
                                     onEdited={_onEdited}
                                     onDeleted={_onDeleted}
                                     draw={{
-                                        rectangle: false,
-                                        polyline: false,
                                         circle: false,
                                         circlemarker: false,
-                                        marker: false,
-                                    }}
+                                    }} onDeleteStart={_onDeleteStart} onDeleteStop={_onDeleteStop} onEditMove={_onEditMove}
                                 />
                             </FeatureGroup>
 
