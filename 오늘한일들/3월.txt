@@ -21,3 +21,5 @@ leaflet 사용해서 이것저것 해보는중.
 블로그포스트 꾸준히 올리는중.
 3.28
 요즘은 leaflet으로 이것저것 해보는중
+3.29
+leaflet marker cluster, heatmap 적용함.
